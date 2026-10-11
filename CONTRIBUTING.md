@@ -27,4 +27,4 @@ about connecting, check [docs/connecting.md](docs/connecting.md) first.
 ## Licence
 
 By contributing, you agree that your contribution is licensed under the
-[Apache-2.0](LICENSE) licence, like the rest of the project.
+[EUPL-1.2](LICENSE) licence, like the rest of the project.

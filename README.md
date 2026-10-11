@@ -1,6 +1,6 @@
 # Cosmo Robot
 
-[![Licence](https://img.shields.io/badge/licence-Apache--2.0-blue)](LICENSE)
+[![Licence](https://img.shields.io/badge/licence-EUPL--1.2-blue)](LICENSE)
 [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84)](#compatibility)
 [![ABI](https://img.shields.io/badge/ABI-arm64--v8a-lightgrey)](#compatibility)
 [![Telemetry](https://img.shields.io/badge/telemetry-none-brightgreen)](#privacy)
@@ -196,7 +196,7 @@ real robot. Correct anything that does not match what you see on your own.
 
 ## Licence
 
-Apache-2.0, see [LICENSE](LICENSE).
+European Union Public Licence v1.2 (EUPL-1.2), see [LICENSE](LICENSE). Every language version of the EUPL is equally valid: [official texts](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
 
 Not affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki.
 Cozmo is a trademark of Digital Dream Labs. Cosmo Robot uses no Anki code: it

@@ -86,7 +86,7 @@ PLANNED
 Original animations (downloaded on first launch, never included in the app), face tracking, cubes, hand gestures and a surveillance mode.
 
 OPEN SOURCE
-Cosmo Robot is free software under the Apache-2.0 licence, built on pycozmo (MIT). Source code, documentation and issue tracker: https://github.com/LabbeSimon/Cosmo-robot
+Cosmo Robot is free software under the European Union Public Licence (EUPL-1.2), built on pycozmo (MIT). Source code, documentation and issue tracker: https://github.com/LabbeSimon/Cosmo-robot
 
 Not affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki. Cozmo is a trademark of Digital Dream Labs.
 ```
@@ -146,7 +146,7 @@ PRÉVU
 Animations d'origine (téléchargées au premier lancement, jamais incluses dans l'application), suivi du visage, cubes, gestes de la main et mode surveillance.
 
 OPEN SOURCE
-Cosmo Robot est un logiciel libre sous licence Apache-2.0, construit sur pycozmo (MIT). Code source, documentation et suivi des problèmes : https://github.com/LabbeSimon/Cosmo-robot
+Cosmo Robot est un logiciel libre sous licence publique de l'Union européenne (EUPL-1.2), construit sur pycozmo (MIT). Code source, documentation et suivi des problèmes : https://github.com/LabbeSimon/Cosmo-robot
 
 Sans lien avec Digital Dream Labs ni Anki, qui ne la soutiennent ni ne la parrainent. Cozmo est une marque de Digital Dream Labs.
 ```

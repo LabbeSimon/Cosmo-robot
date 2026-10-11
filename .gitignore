@@ -6,3 +6,7 @@ local.properties
 *.jks
 .idea/
 *.iml
+__pycache__/
+*.pyc
+*.apk
+*.aab

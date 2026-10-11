@@ -51,6 +51,22 @@ Version 0.1 is in development. No build is published yet.
 <!-- screenshot: connection screen -->
 <!-- screenshot: speech and screen controls -->
 
+## How it works
+
+Everything runs on the phone. The app joins the robot's Wi-Fi for itself only,
+so your other apps keep using mobile data or your home Wi-Fi.
+
+```mermaid
+flowchart LR
+    subgraph phone["Android phone"]
+        ui["Native interface<br/>(Java)"] -- "Chaquopy" --> core["cosmo_core.py"]
+        tts["Android<br/>text-to-speech"] -- "WAV" --> core
+        core --> pycozmo["pycozmo"]
+    end
+    pycozmo <-- "UDP over Cozmo's own Wi-Fi<br/>172.31.1.1" --> robot(["Cozmo"])
+    other["Your other apps"] -. "mobile data or home Wi-Fi" .-> net(("Internet"))
+```
+
 ## Connect your robot
 
 1. Put Cozmo on its charger, plugged into USB power.
@@ -61,6 +77,24 @@ Version 0.1 is in development. No build is published yet.
    network. On Android 8 and 9, join the `Cozmo_…` network in the Wi-Fi settings
    first, then come back and tap **Connect**.
 5. Take Cozmo off the charger to drive: it does not move while docked.
+
+What happens when you tap **Connect** on Android 10 and later:
+
+```mermaid
+sequenceDiagram
+    actor you as You
+    participant cozmo as Cozmo
+    participant app as Cosmo Robot
+    participant android as Android
+    you->>cozmo: Raise and lower the lift (on the charger)
+    cozmo-->>you: Wi-Fi name and password on its face
+    you->>app: Type the password, tap Connect
+    app->>android: Ask for the Cozmo_… network, for this app only
+    android-->>you: System dialog: pick Cozmo_…
+    android-->>app: Network ready
+    app->>cozmo: Connect over UDP
+    cozmo-->>app: Battery, status, camera
+```
 
 The full guide, with troubleshooting, is in
 [docs/connecting.md](docs/connecting.md).

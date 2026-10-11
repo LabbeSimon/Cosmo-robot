@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône dérivée de « Forklift Diskette » (svgrepo.com/svg/142221), colis retiré.
+     Mise à l'échelle pour tenir dans la zone sûre de 66 dp du masque adaptatif. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.13593"
+        android:scaleY="0.13593"
+        android:translateX="27.357"
+        android:translateY="29.260">
+        <path
+            android:fillColor="#F5F5F7"
+            android:fillType="evenOdd"
+            android:pathData="M404.649,235.727c-4.321-11.148-16.904-16.701-28.05-12.379l-199.607,77.369L97.64,96.001 c-2.377-6.137-7.336-10.809-13.602-12.811L28.293,65.339c-4.776-1.529-9.766-1.383-14.429,0.424 c-6.146,2.383-10.822,7.344-12.83,13.613c-3.645,11.381,2.652,23.613,14.036,27.256l45.883,14.691l73.659,190.029 c-16.21,12.906-22.955,35.342-15.083,55.647c9.692,25.008,37.926,37.463,62.939,27.768c24.277-9.41,36.721-36.293,28.553-60.734 l181.249-70.256C403.415,259.456,408.969,246.872,404.649,235.727z M172.878,370.028c-11.371,4.408-24.206-1.252-28.611-12.615 c-4.404-11.365,1.263-24.195,12.634-28.602c11.363-4.404,24.192,1.258,28.596,12.619 C189.902,352.794,184.241,365.622,172.878,370.028z" />
+    </group>
+</vector>

@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/store/icon-512.png" width="112" alt="Cosmo Robot icon: a white hand truck on a dark grey background"></p>
+
 # Cosmo Robot
 
 [![Licence](https://img.shields.io/badge/licence-EUPL--1.2-blue)](LICENSE)

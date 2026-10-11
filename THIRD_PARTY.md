@@ -64,6 +64,13 @@ repository nor the app contains them. The planned animation feature will
 download them on first launch, from their own source, the way pycozmo has
 always done. Without them everything works except animations.
 
+## App icon
+
+The launcher and store icons are derived from
+[Forklift Diskette](https://www.svgrepo.com/svg/142221/forklift-diskette) on
+SVG Repo: the parcel is removed, the remaining hand truck is recoloured and
+scaled to Android's adaptive icon safe zone. Licence: as stated on that page.
+
 ## Trademarks
 
 Not affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki.

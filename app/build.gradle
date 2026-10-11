@@ -36,6 +36,12 @@ chaquopy {
         // Surcharge possible : -PbuildPython=/chemin/vers/python3.12
         buildPython project.findProperty('buildPython') ?: 'python3.12'
         pip {
+            // Versions fixées sur celles que l'index de Chaquopy publie en
+            // wheel Android cp312 (numpy et Pillow ont du code natif : sans
+            // wheel, pip tenterait de les compiler). Le build reste ainsi
+            // reproductible ; une montée de version se décide ici.
+            install 'numpy==1.26.2'
+            install 'Pillow==11.0.0'
             install 'pycozmo==0.8.0'
         }
     }

@@ -7,6 +7,13 @@
     <string name="status_connecting">Connecting to Cozmo…</string>
     <string name="status_connected">Connected</string>
     <string name="status_reconnecting">Connection lost, reconnecting…</string>
+    <string name="status_preparing">Getting ready…</string>
+    <string name="state_offline">Offline</string>
+    <string name="state_busy">Linking</string>
+    <string name="state_online">Online</string>
+    <string name="state_lost">Reconnecting</string>
+    <string name="boot_failed">The robot engine could not start.</string>
+    <string name="pct_fmt">%1$d%%</string>
     <string name="battery_fmt">Battery %1$d%% · %2$.2f V</string>
     <string name="on_charger">on charger</string>
     <string name="charging">charging</string>
@@ -14,6 +21,7 @@
     <string name="cliff">edge detected</string>
     <string name="battery_low">Battery low: camera turned off to save it.</string>
 
+    <string name="camera">Camera</string>
     <string name="camera_off">Camera off</string>
     <string name="camera_waiting">Waiting for the camera…</string>
     <string name="camera_start">Start camera</string>
@@ -21,31 +29,55 @@
 
     <string name="connect_title">Connect your Cozmo</string>
     <string name="connect_steps">1. Put Cozmo on its charger.\n2. Raise and lower its lift: the Wi-Fi name and password appear on its face.\n3. Type the password below and tap Connect.</string>
+    <string name="step_1">Put Cozmo on its charger.</string>
+    <string name="step_2">Raise and lower its lift: the Wi-Fi name and password appear on its face.</string>
+    <string name="step_3">Type the password below and tap Connect.</string>
     <string name="wifi_password">Cozmo Wi-Fi password</string>
     <string name="wifi_settings_hint">Already joined the Cozmo_… network in Android settings? Just tap Connect.</string>
     <string name="wifi_settings">Open Wi-Fi settings</string>
+    <string name="wifi_settings_missing">This phone has no Wi-Fi settings screen to open.</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
     <string name="wifi_failed">Could not join Cozmo\'s Wi-Fi. Check the password and that Cozmo is nearby.</string>
     <string name="wifi_needed">Type Cozmo\'s Wi-Fi password, or join the Cozmo_… network in Android settings first.</string>
+    <string name="wifi_short">Cozmo\'s Wi-Fi password has at least 8 characters. Check what its face shows.</string>
     <string name="wifi_old_android">On this Android version, join the Cozmo_… network in Android settings, then come back and tap Connect.</string>
     <string name="wifi_lost">Cozmo\'s Wi-Fi was lost.</string>
     <string name="robot_failed">Cozmo did not answer. Is it switched on and close to the phone?</string>
+    <string name="detail_fmt">Details: %1$s</string>
 
     <string name="drive">Drive</string>
+    <string name="drive_hint">Hold to drive, let go to stop.</string>
+    <string name="docked_hint">Cozmo does not drive while on its charger. Lift it off first.</string>
     <string name="head">Head</string>
     <string name="lift">Lift</string>
     <string name="speed">Speed</string>
     <string name="volume">Volume</string>
 
+    <string name="voice_screen">Voice and screen</string>
     <string name="speak_hint">Make Cozmo say…</string>
     <string name="speak">Speak</string>
+    <string name="speaking">Speaking…</string>
     <string name="tts_unavailable">Text-to-speech is not available on this phone.</string>
     <string name="screen_hint">Text for Cozmo\'s screen</string>
     <string name="show">Show</string>
+    <string name="shown">Shown on Cozmo\'s face for 10 seconds.</string>
     <string name="lights">Backpack lights</string>
+    <string name="light_off">Off</string>
+    <string name="light_white">White</string>
+    <string name="light_red">Red</string>
+    <string name="light_orange">Orange</string>
+    <string name="light_yellow">Yellow</string>
+    <string name="light_green">Green</string>
+    <string name="light_blue">Blue</string>
+    <string name="light_purple">Purple</string>
 
     <string name="about">About</string>
-    <string name="about_text">Cosmo Robot %1$s, open source under the Apache-2.0 licence. No account, no cloud, no tracking: the app only talks to your robot.\n\nNot affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki. Cozmo is a trademark of Digital Dream Labs.\n\nBuilt on pycozmo (MIT) and Chaquopy (MIT).</string>
+    <string name="about_text">Cosmo Robot %1$s, open source under the European Union Public Licence v1.2 (EUPL-1.2). No account, no cloud, no tracking: the app only talks to your robot.\n\nNot affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki. Cozmo is a trademark of Digital Dream Labs.\n\nBuilt on pycozmo (MIT) and Chaquopy (MIT).</string>
+    <string name="version_fmt">Version %1$s</string>
     <string name="source_code">Source code</string>
+    <string name="licences">Open-source licences</string>
+    <string name="licences_hint">What the app contains, and under which licence</string>
+    <string name="close">Close</string>
+    <string name="no_browser">No browser is installed to open this link.</string>
 </resources>

@@ -1,0 +1,70 @@
+Cosmo Robot is free software under the European Union Public Licence v1.2 (EUPL-1.2).
+
+To talk to the robot, the app carries a Python runtime and a few libraries. They keep their own licences, listed below. Each package's own licence file is the reference; the exact versions follow the Chaquopy release used to build the app.
+
+
+PYTHON PACKAGES
+
+pycozmo 0.8.0 — Cozmo protocol, the whole robot side
+MIT License
+github.com/zayfod/pycozmo
+
+NumPy — audio and image processing
+BSD-3-Clause
+github.com/numpy/numpy
+
+Pillow — camera frames and screen images
+MIT-CMU (historically called HPND)
+github.com/python-pillow/Pillow
+
+dpkt — packet parsing
+BSD-3-Clause
+github.com/kbandla/dpkt
+
+flatbuffers — serialisation
+Apache License 2.0
+github.com/google/flatbuffers
+
+
+RUNTIME
+
+Chaquopy — Java and Python bridge
+MIT License
+github.com/chaquo/chaquopy
+
+CPython 3.12, as built for Android by Chaquopy
+Python Software Foundation License Agreement
+github.com/python/cpython
+
+
+NATIVE LIBRARIES
+
+OpenBLAS (with NumPy) — BSD-3-Clause
+libjpeg-turbo (with Pillow) — IJG, BSD-3-Clause and zlib licences
+FreeType (with Pillow) — FreeType License (FTL)
+libpng (with Pillow) — PNG Reference Library License
+zlib (with CPython and Pillow) — zlib License
+OpenSSL (with CPython) — Apache License 2.0
+libffi (with CPython) — MIT License
+SQLite (with CPython) — public domain
+bzip2 (with CPython) — bzip2 licence (BSD-style)
+xz / liblzma (with CPython) — public domain or 0BSD
+
+
+ACKNOWLEDGEMENTS
+
+Portions of this software are copyright © The FreeType Project (www.freetype.org). All rights reserved.
+
+This software is based in part on the work of the Independent JPEG Group.
+
+
+ANKI'S RESOURCES
+
+Anki's original robot assets (animations, sounds, face data) belong to Anki, now Digital Dream Labs, and are not redistributable. The app does not contain them.
+
+
+TRADEMARKS
+
+Not affiliated with, endorsed by or sponsored by Digital Dream Labs or Anki. Cozmo is a trademark of Digital Dream Labs. Cosmo Robot talks to the robot over the protocol pycozmo implements, and uses no Anki code.
+
+The full list, with links, is in THIRD_PARTY.md in the source repository.

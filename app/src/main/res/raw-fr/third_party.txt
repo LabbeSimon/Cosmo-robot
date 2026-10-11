@@ -1,0 +1,70 @@
+Cosmo Robot est un logiciel libre sous Licence publique de l'Union européenne v1.2 (EUPL-1.2).
+
+Pour parler au robot, l'appli embarque un environnement Python et quelques bibliothèques. Elles gardent leurs propres licences, listées ci-dessous. Le fichier de licence de chaque paquet fait foi ; les versions exactes suivent la version de Chaquopy utilisée pour construire l'appli.
+
+
+PAQUETS PYTHON
+
+pycozmo 0.8.0 — protocole de Cozmo, tout le côté robot
+Licence MIT
+github.com/zayfod/pycozmo
+
+NumPy — traitement du son et de l'image
+BSD-3-Clause
+github.com/numpy/numpy
+
+Pillow — images de la caméra et de l'écran
+MIT-CMU (anciennement appelée HPND)
+github.com/python-pillow/Pillow
+
+dpkt — lecture des paquets réseau
+BSD-3-Clause
+github.com/kbandla/dpkt
+
+flatbuffers — sérialisation
+Licence Apache 2.0
+github.com/google/flatbuffers
+
+
+ENVIRONNEMENT
+
+Chaquopy — passerelle entre Java et Python
+Licence MIT
+github.com/chaquo/chaquopy
+
+CPython 3.12, compilé pour Android par Chaquopy
+Python Software Foundation License Agreement
+github.com/python/cpython
+
+
+BIBLIOTHÈQUES NATIVES
+
+OpenBLAS (avec NumPy) — BSD-3-Clause
+libjpeg-turbo (avec Pillow) — licences IJG, BSD-3-Clause et zlib
+FreeType (avec Pillow) — FreeType License (FTL)
+libpng (avec Pillow) — PNG Reference Library License
+zlib (avec CPython et Pillow) — licence zlib
+OpenSSL (avec CPython) — Licence Apache 2.0
+libffi (avec CPython) — Licence MIT
+SQLite (avec CPython) — domaine public
+bzip2 (avec CPython) — licence bzip2 (de type BSD)
+xz / liblzma (avec CPython) — domaine public ou 0BSD
+
+
+MENTIONS REQUISES
+
+Portions of this software are copyright © The FreeType Project (www.freetype.org). All rights reserved.
+
+This software is based in part on the work of the Independent JPEG Group.
+
+
+RESSOURCES D'ANKI
+
+Les ressources d'origine du robot (animations, sons, données du visage) appartiennent à Anki, aujourd'hui Digital Dream Labs, et ne sont pas redistribuables. L'appli ne les contient pas.
+
+
+MARQUES
+
+Sans lien avec Digital Dream Labs ni Anki, qui ne la soutiennent ni ne la parrainent. Cozmo est une marque de Digital Dream Labs. Cosmo Robot parle au robot par le protocole qu'implémente pycozmo, et n'utilise aucun code d'Anki.
+
+La liste complète, avec les liens, est dans THIRD_PARTY.md, dans le dépôt des sources.

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Palette de G1 Extended. La fenêtre prend tout de suite le fond de la
+         page : pas d'éclair gris au lancement avant que les vues n'arrivent. -->
+    <color name="surface">#FF1C1C1E</color>
+    <color name="ink">#FFF5F5F7</color>
+    <color name="ink_faint">#FF5A5A5E</color>
+
+    <style name="Theme.Cosmo" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:colorBackground">@color/surface</item>
+        <!-- Monochrome : curseur, poignées de sélection et commandes à l'encre. -->
+        <item name="android:colorAccent">@color/ink</item>
+        <item name="android:colorControlActivated">@color/ink</item>
+        <item name="android:colorControlNormal">@color/ink_faint</item>
+        <item name="android:textColorHighlight">#55F5F5F7</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+    </style>
+</resources>

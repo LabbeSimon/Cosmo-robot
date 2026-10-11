@@ -28,6 +28,8 @@ final class LensView extends Ui.Aspect {
     private final TextView stop;
     private Bitmap current;
     private long lastFrameAt;
+    private boolean lastLive, lastWanted;
+    private String lastLabel = "";
 
     LensView(Context c, View.OnClickListener onToggle) {
         super(c, 4f / 3f);
@@ -78,6 +80,9 @@ final class LensView extends Ui.Aspect {
         current = b;
         lastFrameAt = System.currentTimeMillis();
         image.setImageBitmap(b);
+        // La première image bascule l'écran tout de suite, sans attendre
+        // le prochain état sondé (jusqu'à 500 ms plus tard).
+        if (placeholder.getVisibility() == VISIBLE) render(lastLive, lastWanted, true, lastLabel);
     }
 
     /**
@@ -85,12 +90,15 @@ final class LensView extends Ui.Aspect {
      *
      * @param live      liaison établie
      * @param wanted    l'utilisateur veut la caméra
-     * @param on        le robot dit l'envoyer
+     * @param on        le robot dit l'envoyer (une image récente le prouve aussi)
      * @param linkLabel texte à afficher quand la liaison est perdue
      */
     void render(boolean live, boolean wanted, boolean on, String linkLabel) {
+        lastLive = live;
+        lastWanted = wanted;
+        lastLabel = linkLabel;
         boolean fresh = current != null && System.currentTimeMillis() - lastFrameAt < STALE_MS;
-        boolean streaming = live && wanted && on && fresh;
+        boolean streaming = live && wanted && fresh;
         image.setAlpha(streaming ? 1f : 0.25f);
         // Caméra coupée : on lâche la dernière image plutôt que de la laisser
         // traîner en fond comme si elle était actuelle.
@@ -106,13 +114,13 @@ final class LensView extends Ui.Aspect {
         } else if (!wanted) {
             show(getContext().getString(R.string.camera_off));
             spinner.setVisibility(GONE);
-            start.setText(R.string.camera_start);
+            label(R.string.camera_start);
             start.setVisibility(VISIBLE);
         } else {
             // En attente : le bouton reste là, pour renoncer.
             show(getContext().getString(R.string.camera_waiting));
             spinner.setVisibility(VISIBLE);
-            start.setText(R.string.camera_stop);
+            label(R.string.camera_stop);
             start.setVisibility(VISIBLE);
         }
     }
@@ -121,6 +129,11 @@ final class LensView extends Ui.Aspect {
     private void show(String text) {
         String up = text.toUpperCase();
         if (!up.contentEquals(message.getText())) message.setText(up);
+    }
+
+    private void label(int res) {
+        String t = getContext().getString(res);
+        if (!t.contentEquals(start.getText())) start.setText(t);
     }
 
     /** Lâche l'image (déconnexion) pour ne pas réafficher une vue périmée. */

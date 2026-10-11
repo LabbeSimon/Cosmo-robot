@@ -10,6 +10,7 @@ import android.net.NetworkRequest;
 import android.net.wifi.WifiNetworkSpecifier;
 import android.os.Build;
 import android.os.PatternMatcher;
+import android.util.Log;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -25,8 +26,17 @@ import java.net.InetAddress;
  *   172.31.1.x, sans permission de localisation (lire le SSID en exigerait une) ;
  * - Android 10+ : demande au système un réseau Cozmo_… réservé à l'appli, avec
  *   le mot de passe affiché par le robot. Le téléphone garde son internet ailleurs.
+ *   La demande reste active : si le robot redémarre, son Wi-Fi disparaît puis
+ *   revient, et onJoined() est rappelé sans rien refaire.
+ *
+ * Les sockets de pycozmo sont liés au réseau du moment de leur création : après
+ * un onLost()/onJoined(), c'est la reconnexion de cosmo_core (nouveau client,
+ * nouveau socket) qui reprend la main.
  */
 final class CozmoWifi {
+    private static final String TAG = "CozmoWifi";
+
+    /** Rappels émis hors du fil de l'interface. */
     interface Listener {
         void onJoined();
         void onFailed();
@@ -34,11 +44,11 @@ final class CozmoWifi {
     }
 
     private final ConnectivityManager cm;
-    private ConnectivityManager.NetworkCallback callback;
+    private volatile ConnectivityManager.NetworkCallback callback;
     private volatile Network bound;
 
     CozmoWifi(Context ctx) {
-        cm = ctx.getSystemService(ConnectivityManager.class);
+        cm = ctx.getApplicationContext().getSystemService(ConnectivityManager.class);
     }
 
     boolean isBound() {
@@ -69,17 +79,32 @@ final class CozmoWifi {
             return;
         }
         release();
-        WifiNetworkSpecifier spec = new WifiNetworkSpecifier.Builder()
-                .setSsidPattern(new PatternMatcher("Cozmo_", PatternMatcher.PATTERN_PREFIX))
-                .setWpa2Passphrase(password)
-                .build();
+        WifiNetworkSpecifier spec;
+        try {
+            spec = new WifiNetworkSpecifier.Builder()
+                    .setSsidPattern(new PatternMatcher("Cozmo_", PatternMatcher.PATTERN_PREFIX))
+                    .setWpa2Passphrase(password == null ? "" : password.trim())
+                    .build();
+        } catch (IllegalArgumentException e) {
+            // Mot de passe WPA2 hors de 8 à 63 caractères : le Builder lève.
+            Log.w(TAG, "join: " + e.getMessage());
+            l.onFailed();
+            return;
+        }
         NetworkRequest req = new NetworkRequest.Builder()
                 .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
                 .removeCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
                 .setNetworkSpecifier(spec)
                 .build();
-        callback = new ConnectivityManager.NetworkCallback() {
+        ConnectivityManager.NetworkCallback cb = new ConnectivityManager.NetworkCallback() {
+            // Un rappel déjà remplacé par release()/join() peut encore arriver
+            // (fil de ConnectivityManager) : il ne doit plus rien lier.
+            private boolean current() {
+                return callback == this;
+            }
+
             @Override public void onAvailable(Network n) {
+                if (!current()) return;
                 if (cm.bindProcessToNetwork(n)) {
                     bound = n;
                     l.onJoined();
@@ -89,18 +114,28 @@ final class CozmoWifi {
             }
 
             @Override public void onUnavailable() {
+                if (!current()) return;
+                // Demande expirée ou refusée : le système l'a déjà retirée.
+                callback = null;
                 l.onFailed();
             }
 
             @Override public void onLost(Network n) {
-                if (n.equals(bound)) {
-                    cm.bindProcessToNetwork(null);
-                    bound = null;
-                    l.onLost();
-                }
+                if (!current() || !n.equals(bound)) return;
+                cm.bindProcessToNetwork(null);
+                bound = null;
+                l.onLost();
             }
         };
-        cm.requestNetwork(req, callback, 60_000);
+        callback = cb;
+        try {
+            cm.requestNetwork(req, cb, 60_000);
+        } catch (RuntimeException e) {
+            // SecurityException (permission retirée) ou trop de demandes en cours.
+            Log.w(TAG, "requestNetwork", e);
+            callback = null;
+            l.onFailed();
+        }
     }
 
     /** Pour le chemin « réglages », qui n'a pas de rappel : vérifié au sondage. */
@@ -108,19 +143,22 @@ final class CozmoWifi {
         Network n = bound;
         if (n == null) return false;
         if (cm.getNetworkCapabilities(n) != null) return true;
-        cm.bindProcessToNetwork(null);
-        bound = null;
+        if (bound == n) {
+            cm.bindProcessToNetwork(null);
+            bound = null;
+        }
         return false;
     }
 
     void release() {
-        if (callback != null) {
+        ConnectivityManager.NetworkCallback cb = callback;
+        callback = null;
+        if (cb != null) {
             try {
-                cm.unregisterNetworkCallback(callback);
+                cm.unregisterNetworkCallback(cb);
             } catch (IllegalArgumentException ignored) {
-                // déjà désinscrit
+                // déjà désinscrit (demande expirée)
             }
-            callback = null;
         }
         cm.bindProcessToNetwork(null);
         bound = null;

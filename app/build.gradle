@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    namespace 'fr.rayor.cosmorobot'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'fr.rayor.cosmorobot'
+        // Android 8 : couvre la quasi-totalite des telephones encore en service.
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+        // arm64 seul : c'est ce qu'exige le Play Store et ce qu'ont les
+        // telephones actuels ; chaque ABI ajoute ~25 Mo de Python et numpy.
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    lint { checkReleaseBuilds false; abortOnError false }
+}
+
+chaquopy {
+    defaultConfig {
+        // pycozmo 0.8.0 importe le module standard `chunk`, retire en 3.13.
+        version '3.12'
+        // Surcharge possible : -PbuildPython=/chemin/vers/python3.12
+        buildPython project.findProperty('buildPython') ?: 'python3.12'
+        pip {
+            install 'pycozmo==0.8.0'
+        }
+    }
+}

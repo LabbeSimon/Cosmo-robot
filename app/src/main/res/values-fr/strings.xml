@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_offline">Non connecté</string>
+    <string name="status_wifi">Connexion au Wi-Fi de Cozmo…</string>
+    <string name="status_connecting">Connexion à Cozmo…</string>
+    <string name="status_connected">Connecté</string>
+    <string name="status_reconnecting">Liaison perdue, reconnexion…</string>
+    <string name="battery_fmt">Batterie %1$d %% · %2$.2f V</string>
+    <string name="on_charger">sur le socle</string>
+    <string name="charging">en charge</string>
+    <string name="picked_up">soulevé</string>
+    <string name="cliff">vide détecté</string>
+    <string name="battery_low">Batterie faible : caméra coupée pour l\'économiser.</string>
+
+    <string name="camera_off">Caméra éteinte</string>
+    <string name="camera_waiting">En attente de la caméra…</string>
+    <string name="camera_start">Allumer la caméra</string>
+    <string name="camera_stop">Éteindre la caméra</string>
+
+    <string name="connect_title">Connecter votre Cozmo</string>
+    <string name="connect_steps">1. Posez Cozmo sur son socle.\n2. Levez puis baissez sa fourche : le nom du Wi-Fi et le mot de passe s\'affichent sur son visage.\n3. Tapez le mot de passe ci-dessous, puis Connecter.</string>
+    <string name="wifi_password">Mot de passe Wi-Fi de Cozmo</string>
+    <string name="wifi_settings_hint">Déjà connecté au réseau Cozmo_… dans les réglages Android ? Touchez simplement Connecter.</string>
+    <string name="wifi_settings">Ouvrir les réglages Wi-Fi</string>
+    <string name="connect">Connecter</string>
+    <string name="disconnect">Déconnecter</string>
+    <string name="wifi_failed">Impossible de rejoindre le Wi-Fi de Cozmo. Vérifiez le mot de passe et que Cozmo est à proximité.</string>
+    <string name="wifi_needed">Tapez le mot de passe Wi-Fi de Cozmo, ou rejoignez d\'abord le réseau Cozmo_… dans les réglages Android.</string>
+    <string name="wifi_old_android">Sur cette version d\'Android, rejoignez le réseau Cozmo_… dans les réglages, puis revenez toucher Connecter.</string>
+    <string name="wifi_lost">Le Wi-Fi de Cozmo a été perdu.</string>
+    <string name="robot_failed">Cozmo ne répond pas. Est-il allumé et proche du téléphone ?</string>
+
+    <string name="drive">Conduite</string>
+    <string name="head">Tête</string>
+    <string name="lift">Fourche</string>
+    <string name="speed">Vitesse</string>
+    <string name="volume">Volume</string>
+
+    <string name="speak_hint">Faire dire à Cozmo…</string>
+    <string name="speak">Parler</string>
+    <string name="tts_unavailable">La synthèse vocale n\'est pas disponible sur ce téléphone.</string>
+    <string name="screen_hint">Texte pour l\'écran de Cozmo</string>
+    <string name="show">Afficher</string>
+    <string name="lights">LEDs du dos</string>
+
+    <string name="about">À propos</string>
+    <string name="about_text">Cosmo Robot %1$s, open source sous licence Apache-2.0. Ni compte, ni cloud, ni pistage : l\'appli ne parle qu\'à votre robot.\n\nSans lien avec Digital Dream Labs ni Anki, qui ne la soutiennent ni ne la parrainent. Cozmo est une marque de Digital Dream Labs.\n\nConstruite sur pycozmo (MIT) et Chaquopy (MIT).</string>
+    <string name="source_code">Code source</string>
+</resources>
